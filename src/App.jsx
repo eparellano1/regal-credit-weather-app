@@ -1,8 +1,7 @@
-// import { useState } from 'react'
 import './App.css'
 import Weather from './Components/Weather'
 import Forecast from './Components/Forecast'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion';
 import sunny_icon from "./Assets/sunny.png";
 import cloudy_icon from "./Assets/cloudy.png";
@@ -17,13 +16,13 @@ function App() {
   let [wicon,setWicon] = useState(sunny_icon)
   let [weatherStatus, setWeatherStatus] = useState('')
   let [forecast, setForecast] = useState([{
-    temp_min: 0, temp_max: 0, icon: sunny_icon
+    date: '', temp_min: 0, temp_max: 0, icon: sunny_icon
   }])
 
   const api_key = import.meta.env.VITE_REACT_APP_API_KEY
 
   const search = async () => {
-    const city = document.getElementById("search-city").value
+    const city = document.getElementById("search-city").value || 'Manila'
     if (city === "") return 
     
     // get city locationKey
@@ -39,6 +38,11 @@ function App() {
       setCity(locationName)
     } else return 
   }
+
+  // render default search Manila
+  useEffect(() => {
+    search()
+  }, []);
 
   // get icon image according to icon number from api
   const getIconImage = (icon) => {
@@ -82,6 +86,7 @@ function App() {
     let response = await fetch(url)
     let data = await response.json()
     setForecast(data.DailyForecasts.map(forecast => ({
+      date: forecast.Date,
       temp_min: forecast.Temperature.Minimum.Value,
       temp_max: forecast.Temperature.Maximum.Value,
       icon: getIconImage(forecast.Day.Icon)

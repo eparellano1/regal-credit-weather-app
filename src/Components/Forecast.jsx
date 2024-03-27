@@ -30,7 +30,7 @@ const Forecast = ({ forecast, getIconImage }) => {
                 <img src={day.icon ? day.icon : sunny_icon} className="h-14 w-14 align-center justify-center"/>
               </div>
               
-              <h4 className="text-2xl font-medium p-2">{convertToDay(day.Date)}</h4>
+              <h4 className="text-2xl font-medium p-2">{convertToDay(day.date)}</h4>
               
               <p className="p-1">Min: {day.temp_min ? day.temp_min : '0'} °C</p>
               <p className="p-1">Max: {day.temp_max ? day.temp_max : '0'} °C</p>

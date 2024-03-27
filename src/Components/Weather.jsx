@@ -27,11 +27,11 @@ const Weather = ({ search, wicon, city, temperature, weatherStatus,  }) => {
           <div className="flex flex-row h-full align-center justify-center gap-12 p-5">
             <div className="flex flex-col items-center justify-center">
               <img className="w-56 h-56" src={wicon} alt="{clear icon}"/>
-              <h3 className="text-4xl flex text-white my-2">{weatherStatus ? weatherStatus : 'Sunny'}</h3>
+              <h3 className="text-4xl flex text-white my-2">{weatherStatus ? weatherStatus : '-'}</h3>
             </div>
             <div className="flex flex-col justify-center text-white my-6 w-100 px-10">
-              <h1 className="text-8xl py-4 font-medium flex items-center justify-center">{temperature ? temperature : '12'} °C</h1>
-              <h2 className="text-5xl flex items-center justify-center">{city ? city : 'Tarlac City'}</h2>
+              <h1 className="text-8xl py-4 font-medium flex items-center justify-center">{temperature ? temperature : '-'} °C</h1>
+              <h2 className="text-5xl flex items-center justify-center">{city ? city : '-'}</h2>
             </div>
           </div>
         </div>
